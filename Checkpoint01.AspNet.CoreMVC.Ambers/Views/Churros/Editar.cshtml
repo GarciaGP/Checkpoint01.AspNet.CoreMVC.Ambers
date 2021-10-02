@@ -1,0 +1,14 @@
+﻿@model Churros
+@{
+    ViewData["Title"] = "Editar";
+}
+
+<h1>Editar</h1>
+
+<form asp-action="editar">
+
+    <partial name="_Form" /> <!-- Inclui o conteúdo da página _Form.cshtml-->
+
+    <input type="submit" value="Editar" class="btn btn-outline-primary" />
+    <a asp-action="index" class="btn btn-outline-dark">Cancelar</a>
+</form>

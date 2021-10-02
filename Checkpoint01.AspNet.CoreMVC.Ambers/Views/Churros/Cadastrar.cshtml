@@ -1,0 +1,19 @@
+﻿
+@{
+    ViewData["Title"] = "Cadastrar novo churros no cardápio";
+}
+
+<h1>Cadastro de Churros</h1>
+
+<mensagem texto="@TempData["msg"]"></mensagem> <!--Criar a tag para mensagem: -->
+
+<form asp-action="cadastrar">
+
+    <!-- Incluir o conteúdo da página _Form.cshtml -->
+    <partial name="_Form" />
+
+    <botao texto="Salvar" class="btn btn-outline-success"></botao>
+
+    <a asp-action="index" class="btn btn-outline-dark">Cardápio</a>
+</form>
+

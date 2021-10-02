@@ -1,0 +1,71 @@
+﻿@model List<Churros>
+
+@{
+    ViewData["Title"] = "Veículos Disponíveis";
+}
+
+<h1>Cardápio</h1>
+
+<mensagem texto="@TempData["msg"]"></mensagem>
+
+<div class="text-right mb-2">
+    <a asp-action="cadastrar" class="btn btn-outline-warning btn-sm">Cadastrar</a>
+</div>
+
+<table class="table table-striped">
+    <tr>
+        <th>Id</th>
+        <th>Nome</th>
+        <th>Descrição</th>
+        <th>Data de alteração</th>
+        <th>Tamanho</th>
+        <th>Recheio</th>
+        <th>Cobertura</th>
+        <th>Disponível</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.Nome</td>
+            <td>@item.Descricao</td>
+            <td>@(item.DataDeAlteracao == DateTime.MinValue ? "-" : item.DataDeAlteracao.ToShortDateString())</td>
+            <td>@(item.Tamanho)</td>
+            <td>@item.Recheio</td>
+            <td>@item.Cobertura</td>
+            <td>@(item.Disponivel ? "X" : "")</td>
+            <td>
+                <a asp-action="editar" asp-route-id="@item.Id" class="btn btn-sm btn-outline-primary">Editar</a>
+                <!-- Button trigger modal -->
+                <!-- Quando o botão for clicado o Id do veículo é setado no campo oculto do formulário do modal -->
+                <button onclick="idVeiculo.value = @item.Id" type="button" class="btn btn-outline-danger btn-sm" data-toggle="modal" data-target="#exampleModal">
+                    Remover
+                </button>
+            </td>
+        </tr>
+    }
+</table>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Confirmação</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Deseja realmente excluir o item do cardápio?
+            </div>
+            <div class="modal-footer">
+                <form asp-action="remover">
+                    <input type="hidden" name="id" id="idVeiculo" />
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
+                    <button type="submit" class="btn btn-danger">Sim</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

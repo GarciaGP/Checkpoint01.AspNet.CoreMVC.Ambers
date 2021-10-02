@@ -1,0 +1,14 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+    <div class="text-center">
+        <h1 class="display-4">Bem vindo ao IChurros Ambers!</h1>
+        <img src="~/imgs/churro.jpg" />
+        <p>Confira nosso cardápio online!</p>
+        <div class="mb-2">
+            <a asp-controller="churros" asp-action="index" class="btn btn-warning">Cardápio</a>
+            <a asp-controller="churros" asp-action="cadastrar" class="btn btn-warning">Cadastrar</a>
+        </div>
+        <p>Desenvolvido com <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    </div>

@@ -1,0 +1,32 @@
+﻿@model Churros
+
+<div class="form-group">
+    <label asp-for="Nome"></label>
+    <input asp-for="Nome" class="form-control" />
+</div>
+<div class="form-group">
+    <label asp-for="Descricao"></label>
+    <input asp-for="Descricao" class="form-control" />
+</div>
+<div class="form-group">
+    <label asp-for="Tamanho"></label>
+    <select asp-for="Tamanho" class="form-control" asp-items="@Html.GetEnumSelectList<Tamanho>()">
+        <option>Selecione</option>
+    </select>
+</div>
+<div class="form-group">
+    <label asp-for="Recheio"></label>
+    <select asp-for="Recheio" class="form-control" asp-items="@ViewBag.Recheios">
+        <option>Selecione</option>
+    </select>
+</div>
+<div class="form-group">
+    <label asp-for="Cobertura"></label>
+    <select asp-for="Cobertura" class="form-control" asp-items="@ViewBag.Coberturas">
+        <option>Selecione</option>
+    </select>
+</div>
+<div class="form-group">
+    <input asp-for="Disponivel" />
+    <label asp-for="Disponivel"></label>
+</div>
