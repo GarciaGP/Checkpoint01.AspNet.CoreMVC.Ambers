@@ -8,6 +8,16 @@
 
 <mensagem texto="@TempData["msg"]"></mensagem>
 
+<form class="form-inline mb-3">
+    <input type="text" placeholder="Digite a Cobertura" name="coberturaBusca" class="form-control mr-2" />
+    <input type="submit" value="Pesquisar" class="btn btn-success" />
+</form>
+
+@if (Model.Count == 0)
+{
+    <mensagem texto="Nenhum registo encontrado" class="alert alert-danger"></mensagem>
+}
+
 <div class="text-right mb-2">
     <a asp-action="cadastrar" class="btn btn-outline-warning btn-sm">Cadastrar</a>
 </div>
@@ -31,8 +41,8 @@
             <td>@item.Descricao</td>
             <td>@(item.DataDeAlteracao == DateTime.MinValue ? "-" : item.DataDeAlteracao.ToShortDateString())</td>
             <td>@(item.Tamanho)</td>
-            <td>@item.Recheio</td>
-            <td>@item.Cobertura</td>
+            <td>@item.Recheio.Descricao</td>
+            <td>@item.Cobertura.Descricao</td>
             <td>@(item.Disponivel ? "X" : "")</td>
             <td>
                 <a asp-action="editar" asp-route-id="@item.Id" class="btn btn-sm btn-outline-primary">Editar</a>

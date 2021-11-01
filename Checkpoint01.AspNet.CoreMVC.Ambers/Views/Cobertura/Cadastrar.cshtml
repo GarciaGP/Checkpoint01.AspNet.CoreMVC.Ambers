@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewData["Title"] = "Cadastrar";
+}
+
+<h1>Cadastro de Coberturas</h1>
+
+<mensagem texto="@TempData["msg"]"></mensagem> <!--Criar a tag para mensagem: -->
+
+<form asp-action="cadastrar">
+
+    <partial name="_Form" />
+
+    <input type="submit" value="Cadastrar" class="btn btn-primary" />
+
+</form>
+

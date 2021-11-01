@@ -1,14 +1,18 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace Checkpoint01.AspNet.CoreMVC.Ambers.Models
 {
+    [Table("Tbl_Churros")]
     public class Churros
     {
+        [Column("Id"), HiddenInput]
         public int Id { get; set; }
         [MaxLength(30), Required]
         public string Nome { get; set; }
@@ -24,11 +28,19 @@ namespace Checkpoint01.AspNet.CoreMVC.Ambers.Models
         [DisplayName("Disponível")]
         public bool Disponivel { get; set; }
 
+        // Relacionamento 1:1
         [Required]
-        public string Cobertura { get; set; }
+        public Cobertura Cobertura { get; set; }
+        public int CoberturaId { get; set; }
 
+        // Relacionamento 1:N
         [Required]
-        public string Recheio { get; set; }
+        public Recheio Recheio { get; set; }
+        public int RecheioId { get; set; }
+
+        // Relacionamento N:N
+        public ICollection<ChurrosPedido> ChurrosPedidos { get; set; }
+
     }
 
     public enum Tamanho
